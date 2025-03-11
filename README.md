@@ -68,7 +68,7 @@ WhatsApp has swiftly risen to the top of the global text and voice messaging mar
 
 ### Opening this .txt file up, you get messages in a format that looks like this:
 
-<img src="whatsappA/assets/images/WhatsApp3.jpeg" align="center">
+<img src="whatsappA/assets/images/WhatsApp3.jpeg" width=150 length=150 align="center">
 
 
 # Exploratory Data Analysis
@@ -93,9 +93,9 @@ We will be using :
 6. **datetime** for datetime manipulation.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (1).png">
+<img src="whatsappA/assets/snippets/snap1.png">
 </p>
-*****************************************************************************************
+
 
 ### Preparation and reading data
 
@@ -104,25 +104,25 @@ You can't read the file line by line and obtain every message you want since Wha
 I use a comma to divide each line as I read it, then I take the first result from the `split()` method.  A valid date would be the first item on the line if it were a new message, and it would be added to the list of messages as a new message.  If not, the message will be attached to the end of the preceding message as a single, continuous message because it is a part of the prior message.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (0).png">
+<img src="whatsappA/assets/snippets/snap2.png">
 </p>
-*********************************************************************
+
 # Pre-Processing
 
 Firstly, let’s load our .txt into a DataFrame.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (2).png">
+<img src="whatsappA/assets/snippets/snap3.png">
 </p>
-**********************************************************************
+
 The dataset now contains 3 columns - DateTime String, User, and Message sent and their respective entries in 13655 rows.
 
 **Let’s create some helper columns for better analysis!**
 
 <p align="center">
-<img src="assets/code_snippets/carbon (3).png">
+<img src="whatsappA/assets/snippets/snap4.png">
 </p>
-*********************************************************************
+
 Now that we have a clean DataFrame to work with, it’s time to perform analysis on it. **Let’s start Visualizing!**
 
 <p align="center">
@@ -138,10 +138,10 @@ At this point, I think I’m ready to start my analysis so I will plot a simple 
 I expect to see a nice line graph with crests and troughs in odd places.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (4).png">
+<img src="whatsappA/assets/snippets/snap5.png">
 </p>
 <p align="center">
-<img src="assets/code_snippets/carbon (5).png">
+<img src="whatsappA/assets/snippets/snap6.png">
 </p>
 <p align="center">
 <img src="assets/plots/msg_plots.png">
@@ -152,11 +152,11 @@ Grouping the data set by date and sorting values according to the number of mess
 
 
 <p align="center">
-<img src="assets/code_snippets/carbon (6).png">
+<img src="whatsappA/assets/snippets/snap7.png">
 </p>
 
 <p align="center">
-<img src="assets/code_snippets/carbon (7).png">
+<img src="whatsappA/assets/snippets/snap8.png">
 </p>
 
 <p align="center">
@@ -171,108 +171,127 @@ Before analyzing, the top users, let’s find out how many ghosts are there in t
 
 
 <p align="center">
-<img src="assets/code_snippets/carbon (8).png">
+<img src="whatsappA/assets/snippets/snap9.png">
 </p>
 
 #### Shocking Result
+- Total number of people who have sent at least one message on the group are **178**.
+- BUT, the total number of participants were **145**. This is beacuse the had had members joining others leaving along the way.
+- **That means -35 people in the group have not sent even a single message throughout these 9 months and 5138 messages.** Recheck this! 
 
-- Total number of people who have sent at least one message on the group is 154.
-- BUT, the total number of participants are 237.
-- That means **81** people in the group have **not sent even a single message throughout these 9 months and 13500+ messages**.
 
-
-### Now, *pre-processing the top 10 active users.*
-
-Grouping the dataset by the user, and sorting according to the message count.
+### Now, pre-processing the top 10 active users.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (9).png">
+<img src="whatsappA/assets/snippets/snap10.png">
 </p>
 
-And, we will be *replacing names by their initials* for **Better Visualization**, and also to maintain anonymity.
-
+## Now, visualizing top 10 active users.
+### Replacing names with initials for better visualization
 
 <p align="center">
-<img src="assets/code_snippets/carbon (10).png">
+<img src="whatsappA/assets/snippets/snap11.png">
 </p>
 
-Also, I will be customizing the styles for **Better Visualization and More Readability** using *matplotlib*.
+### Starting with a basic plot.
+- [Color References for Matplotlib](https://matplotlib.org/3.1.0/gallery/color/named_colors.html)
+
+- **Improving Default Styles using Seaborn**
+
+    - [References](https://seaborn.pydata.org/generated/seaborn.set_style.html)
 
 <p align="center">
-<img src="assets/code_snippets/carbon (11).png">
+<img src="whatsappA/assets/snippets/snap12.png">
 </p>
 
-**My first plot will be the total number of messages sent per person.** For this, a simple *seaborn countplot* will suffice.
+## Now, I will be trying different visualization methods.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (13).png">
+<img src="whatsappA/assets/snippets/snap13.png">
 </p>
 
 <p align="center">
-<img src="assets/plots/top10users.png">
+<img src="whatsappA/assets/plot_images/msg_plots3.svg">
 </p>
 
-**TK** beats everyone by a mile, with **2500+ messages**, followed by **DL** with around **2000 messages**.
+# Note
 
-#### But here comes the twist!
+I'll give each character a distinct color as practically every plot will compare them to one another, making it simple to recognize them across several stories. 
 
-Now, I will plot the **Average Message Length of the messages sent by the Top 10 most active users**. *Let’s see the results now!*
+ - I had the option of using Seaborn's color scheme, but:  Seaborn uses its own default color scheme, however I wanted a character's color to be constant throughout the story;   I also got my color palette from https://coolors.co/ because I wanted to experiment with different hues.
 
-### *Comparing the top 10 users!*
+ - I write a function that, given a list of names, rearranges colors to correspond with the plot's ordering.  This function returns a rearranged list of colors after receiving the sorted names as input.  In a seaborn plotting function, this list must be provided into the `pallete` input.
 
-Now, first things first, since almost all the plots will be *comparing one person with another*, I’ll assign a **specific color to each person** so that it becomes **easy to identify each person among multiple plots**.
+## Defining a function to tackle the problem.
 
-I could’ve used *seaborn’s color palette* but:
-
-— Seaborn assigns *default colors* itself, but I wanted ***the color of a certain person to remain the same, no matter the plot.***
-
-— Also, I wanted to try some different colors so I grabbed my color palette from [this website](https://coolors.co/).
-#### Defining a function to tackle the problem.
-
-I’m defining this function ***to maintain consistent colors for each person across all plots***. Since the order will vary depending on the plot, this is passed to the function which will *reorder colors in a particular order so that the color of a certain person remains the same no matter the plot*. This will help maintain ***consistency and readability*** amongst the many graphs I will be plotting.
+In order to keep each character's color consistent over all plots, I'm writing the following function.  This is supplied to the function that will rearrange colors in a specific order because the order will change based on the plot. This way, the color of a particular person will always be the same regardless of the plot.  This will make the numerous graphs I'll be plotting more readable and consistent.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (14).png">
+<img src="whatsappA/assets/snippets/snap14.png">
 </p>
 
-Next, I made a dictionary where **each key is the name and the value for each would be their assigned color**. I create a function that reorders colors given a list of names to match the ordering of the plot. 
-
-This function takes the ordered names as input and returns a reordered list of colors. This list has to be passed into the **`palette`** argument in a **seaborn plotting function.**
-
+### Now, we have a really nice set of colours for each person, with which we can visualize using `sns.palplot`.
 <p align="center">
-<img src="assets/code_snippets/carbon (15).png">
+<img src="whatsappA/assets/snippets/snap15.png">
 </p>
-
-Now we have a *nice set of colors for each person* which we can visualize using **palplot**.
-
-
+#### Pic with dictionary of names comes below
 <p align="center">
 <img src="assets/plots/top10_palette.png">
 </p>
 
-The next one would be the average message length for each person. For this, I create a new column called `message_length` which contains the length of each message which I get by using a lambda function which returns the length of a given message. I just group the DataFrame by name and then apply `mean()` on the returned groupby object.
-
+## Now, finding the average message length of the 10 most active users of the group.
 <p align="center">
-<img src="assets/code_snippets/carbon (16).png">
+<img src="whatsappA/assets/snippets/snap16.png">
 </p>
 
-- **Plotting multiple charts in a grid**
-
-Matplotlib and Seaborn also support plotting multiple charts in a grid, using `plt.subplots`, which returns a set of axes that can be used for plotting.
-
+## Now, we will be plotting most sent messages and respective average message lengths simultaneously, to see some interesting results.
+- Plotting multiple charts in a grid
+    - Matplotlib and Seaborn also support plotting multiple charts in a grid, using `plt.subplots`, which returns a set of axes that can be used for plotting.
 <p align="center">
-<img src="assets/code_snippets/carbon (17).png">
+<img src="whatsappA/assets/snippets/snap17.png">
 </p>
 
-#### Let’s see the plots, simultaneously for **some interesting results**!
+### Plots like this are fascinating to see side by side because of the twist:
 
+ Interestingly Amisi, who sent the most texts (more than 350), had the third-shortest average message length.  This indicates that the sender sends a large number of broken WhatsApp messages at once. 
+
+ We may observe that Twiri sends a lot of messages, but they are comparatively longer.
+
+ Peter sends comparatively fewer messages, but they are longer.
+
+### Sometimes things aren't as they seem.
+
+# Top 10 users most sent media 
+
+- The exported chats were exported without any media files. Any message that contained media was indicated with `‘<Media Omitted> ’`. 
+
+### Pre-processing
+
+**We can use this to filter out and see who sends the most media.**
 <p align="center">
-<img src="assets/plots/top10_msg_plots_diff.png">
+<img src="whatsappA/assets/snippets/snap18.png">
 </p>
 
-It’s really interesting to see plots like this side by side, because here comes the twist:
+### Visualization using different Seaborn's Color Palettes
+- [Seaborn References](http://seaborn.pydata.org/tutorial/color_palettes.html#using-circular-color-systems)
+- [Seaborn's Different Colors](https://medium.com/@andykashyap/top-5-tricks-to-make-plots-look-better-9f6e687c1e08)
+- [Seaborn's Color Visualization](https://python-graph-gallery.com/197-available-color-palettes-with-matplotlib/)
 
-- Ironically, TK, the person who sent the **most amount of texts** (2000+), has the least messages’ length on average. This means this person sends broken and many WhatsApp messages in one go.
+###### QUICK HACK
+- to get **all possible Seaborn's color palettes**:
+    - Just put a random input `palette="xyz"`
+    - It will then show an error, showing all possible palettes you can try out from!
+ 
+### Which user sends the most media?
+<p align="center">
+<img src="whatsappA/assets/snippets/snap19.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/top10media_svg">
+</p>
+
+
 
 Here is a snippet of how TK sends messages:
 
@@ -288,24 +307,6 @@ Here is a snippet of how TK sends messages:
 
 Alright, moving on to a more detailed analysis of the dataset!
 
-## The Top 10 users who send the most media
-
-The exported chats were exported without any media files. Any message that contained media was indicated with *‘<Media Omitted> ’*. **We can use this to filter out and see who sends the most media.**
-
-<p align="center">
-<img src="assets/code_snippets/carbon (18).png">
-</p>
-
-### Which user sends the most media?
-Again, a simple plot using seaborn, but a different Color Palette: *CMRmap*.
-
-<p align="center">
-<img src="assets/code_snippets/carbon (19).png">
-</p>
-
-<p align="center">
-<img src="assets/plots/top10media.png">
-</p>
 
 **TK and DL** are beating everyone by a *huge margin*. They, also rank the *top in total messages*, though *last in average message length*. ***Most dedicated contributor award goes to TK and DL!***
 
@@ -318,19 +319,19 @@ Again, a simple plot using seaborn, but a different Color Palette: *CMRmap*.
 Will be using the `emoji` module, that was imported earlier.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (20).png">
+<img src="whatsappA/assets/snippets/snap20.png">
 </p>
 
 Will create another helper column using `emoji.demojize("<emoji>")`, since **emojis will not be rendered in the plots**.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (21).png">
+<img src="whatsappA/assets/snippets/snap21.png">
 </p>
 
 Since the emojis **will not be rendered into the plots**, here is how the *top10emojis dataset looks like*!
 
 <p align="center">
-<img src="assets/extras/top10emojis_df.png">
+<img src="awhatsappA/assets/images/emojis.png">
 </p>
 
 <p align="center">
@@ -342,14 +343,14 @@ Since the emojis **will not be rendered into the plots**, here is how the *top10
 This time, it will be plotted a bit differently. Numbers will be plotted on x-direction.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (22).png">
+<img src="whatsappA/assets/snippets/snap22.png">
 </p>
 
 <p align="center">
-<img src="assets/plots/top10emoji.png">
+<img src="whatsappA/assets/plot_images/top10emoji.svg">
 </p>
 
-- Not that it is worth anything, but “😂” beats everyone by a *huge margin!*
+- Not that it is worth anything, but “😂” beats everyone by a huge margin!
 
 ## Most active days, most active hours, most active months.
 
@@ -358,20 +359,20 @@ Now, I will be analyzing the timely usage of the groups.
 #### Pre-processing for most active hours.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (23).png">
+<img src="whatsappA/assets/snippets/snap23.png">
 </p>
 
 <p align="center">
-<img src="assets/code_snippets/carbon (24).png">
+<img src="whatsappA/assets/snippets/snap24.png">
 </p>
 
 ### Which hour of the day are most messages exchanged?
 
 <p align="center">
-<img src="assets/plots/most_active_hours.png">
+<img src="whatsappA/assets/plot_images/most_active_hours.svg">
 </p>
 
-Interestingly, the group is most active around **midnight**, followed by *afternoon*.
+Interestingly, the group is most active around midnight, followed by afternoon.
 
 ### Pre-processing Weekdays and Months
 
@@ -379,31 +380,29 @@ Now, irrespective of the number of messages per day or month, we want the order 
 
 
 <p align="center">
-<img src="assets/code_snippets/carbon (25).png">
+<img src="whatsappA/assets/snippets/snap25.png">
 </p>
 
 - Plotting multiple charts using `plt.subplots`.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (26).png">
+<img src="whatsappA/assets/snippets/snap26.png">
 </p>
 
 
-### Visualization
-
-Now, we will be plotting ***grouped by day and respective group by month simultaneously***, to see some interesting results.
+## Visualization
+### Now, we will be plotting *grouped by day* and respective *group by month* simultaneously, to see some interesting results.
+- Using `plt.subplots` to plot multiple charts in a grid.
 
 <p align="center">
-<img src="assets/plots/days_and_month.png">
+<img src="whatsappA/assets/plot_images/days_and_months.svg">
 </p>
 
-## *Inferences*
+## Inferences
 
-- The group is **most active on Sundays**, and **least active on Mondays** (probably *Monday Blues*.)
-
-- Also, **Saturday** has a *minor drop*, this is probably due to the fact that Saturday is the *first weekend after Friday* and people are usually taking a *rest* and doing other activities than messaging on their phones.
-
-- The group has been recently very active, in September.
+##### The group is most active on Mondays, and least active on Saturday (probably guys are out partying!)
+##### It has been recently very active, in Febraury, March, September and October mid semesters.
+##### Least active months are between May and August, this is when we're on Summer holidays
 
 
 To get a clearer understanding, we will plot a combined graph — **Heatmap**.
@@ -411,36 +410,102 @@ To get a clearer understanding, we will plot a combined graph — **Heatmap**.
 #### Now, we will plot a heatmap, combining the above to bar plots, for a better understanding!
 
 <p align="center">
-<img src="assets/code_snippets/carbon (27).png">
+<img src="whatsappA/assets/snippets/snap27.png">
 </p>
 
 ### Heatmap of Month sent and Day sent
 
 <p align="center">
-<img src="assets/plots/month_day_heatmap.png">
+<img src="whatsappA/assets/plot_images/month_day_heatmap.svg">
 </p>
 
 ##### Inferences
 
-- The group is more active on weekends, throughout the months.
-- September has the most lighter blue shades and more yellow gradients.
-- This gives a *combined analysis*, which is really helpful in **real-time projects**.
+- The group is more active on weekdays, throughout the months that we're in for semesters.
+- This gives a combined analysis, which is really helpful in real-time projects.
 
 ## Most Used Words in the whole chat.
 
 I will be using the `wordcloud` module, to create a WordCloud of the **most used words**! I will be *adding some common words, to the stopwords*, such that it will not be included the WordCloud.
 
 <p align="center">
-<img src="assets/code_snippets/carbon (28).png">
+<img src="whatsappA/assets/snippets/snap28.png">
 </p>
 
 ### Most Used Words in the chat
 
 <p align="center">
-<img src="assets/plots/wordcloud.png">
+<img src="whatsappA/assets/plot_images/most_used_words.svg">
+</p>
+The recursive nature of gathering data on the members present during that semester is the reason why its members' official names show up in WordCloud's most used words. Their names appear as the most used words since they typically use the copy and paste feature to make the list.
+
+
+
+### Sentiment Analysis
+
+<p align="center">
+<img src="whatsappA/assets/snippets/snap31.png">
 </p>
 
-# *Conclusion*
+### Plot Sentiment Distribution
+<p align="center">
+<img src="whatsappA/assets/snippets/snap32.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/sentiment_distribution.svg">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/snippets/snap33.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/sentiment_over_time.svg">
+</p>
+
+### Swear Word Detection
+
+<p align="center">
+<img src="whatsappA/assets/snippets/snap34.png">
+</p>
+
+### VADER for Sentiment Analysis
+VADER (Valence Aware Dictionary and Sentiment Reasoner) is a lexicon and rule-based sentiment analysis tool specifically designed for social media text. It provides a more nuanced sentiment score (positive, negative, neutral, and compound).
+
+<p align="center">
+<img src="whatsappA/assets/snippets/snap35.png">
+</p>
+
+##### VADER Sentiment Visualization
+<p align="center">
+<img src="whatsappA/assets/snippets/snap36.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/vader_sentiment_distribution.svg">
+</p>
+
+#### Plot VADER sentiment over time
+
+<p align="center">
+<img src="whatsappA/assets/snippets/snap37.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/vader_sentiment_over_time.svg">
+</p>
+
+#### Swear Word Usage
+<p align="center">
+<img src="whatsappA/assets/snippets/snap39.png">
+</p>
+
+<p align="center">
+<img src="whatsappA/assets/plot_images/swear_words_over_time.svg">
+</p>
+
+# Conclusion
 
 **That’s it from my end! I hope you learned and enjoyed a lot!**
 
@@ -448,25 +513,4 @@ I will be using the `wordcloud` module, to create a WordCloud of the **most used
 <img src="assets/extras/5-the-office.gif">
 </p>
 
-It’s really interesting to see the texting habits of people and incidents of daily life reflected in the text. I suggest you take a look at my code and apply it to your own group chats. However, some modifications will have to be done at the DataFrame creation part. 
 
-If you’re interested, shoot me a message and I’ll help you out.
-
-## Where to go from here?
-
-- Extending this Whatsapp Analysis Project!
-    - Adding a **Sentiment Analyser to the texts** — *Swear Words & Sentiments*!
-    - Libraries called `profanity_check`, `TextBlob`, `VADER` (Valence Aware Dictionary and Sentiment Reasoner) from NTLK and TextBlob.
-
-- Instagram Data Analysis
-- Play Store Data Analysis
-- Exploring more datasets! It is never-ending, as there can be **Infinite Stories with Data**!
-- Once, done with enough Data Analysis, try making Datasets, scraping Data from websites and creating Interesting Datasets!
-
-> And the best time to do it is right now, today, because tomorrow, typically means never.
-
-
-***Thank you for reading!*** *Let me know what you thought about this project.*
-
-# Author 
-- [Tushar Nankani](https://www.linkedin.com/in/tusharnankani/)
