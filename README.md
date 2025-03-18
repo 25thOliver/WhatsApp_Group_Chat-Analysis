@@ -234,10 +234,7 @@ In order to keep each character's color consistent over all plots, I'm writing t
 <p align="center">
 <img src="whatsappA/assets/snippets/snap15.png">
 </p>
-#### Pic with dictionary of names comes below
-<p align="center">
-<img src="assets/plots/top10_palette.png">
-</p>
+
 
 ## Now, finding the average message length of the 10 most active users of the group.
 <p align="center">
@@ -298,9 +295,6 @@ In order to keep each character's color consistent over all plots, I'm writing t
 </p>
 
 Alright, moving on to a more detailed analysis of the dataset!
-
-
-**TK and DL** are beating everyone by a *huge margin*. They, also rank the *top in total messages*, though *last in average message length*. ***Most dedicated contributor award goes to TK and DL!***
 
 <p align="center">
 <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width=400>
