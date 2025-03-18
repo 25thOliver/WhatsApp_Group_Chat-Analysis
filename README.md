@@ -293,14 +293,6 @@ In order to keep each character's color consistent over all plots, I'm writing t
 
 
 
-Here is a snippet of how TK sends messages:
-
-<p>
-<img src="assets/extras/TK_MSG_Snippet.png" width=350>
-</p>
-
-- Also, we can see that, I have sent *less number of messages (7th) on average* while having a ***relatively longer message length (1st)***.
-
 <p align="center">
 <img src="assets/extras/2-bragging.gif">
 </p>
