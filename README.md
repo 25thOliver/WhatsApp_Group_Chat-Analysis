@@ -144,7 +144,7 @@ I expect to see a nice line graph with crests and troughs in odd places.
 <img src="whatsappA/assets/snippets/snap6.png">
 </p>
 <p align="center">
-<img src="assets/plots/msg_plots.png">
+<img src="whatsappA/assets/plot_images/msg_plots.svg">
 </p>
 
 ## Top 10 Most Active Days
