@@ -435,7 +435,7 @@ I will be using the `wordcloud` module, to create a WordCloud of the **most used
 ### Most Used Words in the chat
 
 <p align="center">
-<img src="whatsappA/assets/plot_images/most_used_words.svg">
+<img src="whatsappA/assets/plot_images/most_used_words.png">
 </p>
 The recursive nature of gathering data on the members present during that semester is the reason why its members' official names show up in WordCloud's most used words. Their names appear as the most used words since they typically use the copy and paste feature to make the list.
 
