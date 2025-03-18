@@ -160,7 +160,7 @@ Grouping the data set by date and sorting values according to the number of mess
 </p>
 
 <p align="center">
-<img src="assets/plots/top10_days.png">
+<img src="whatsappA/assets/plot_images/top10_days.svg">
 </p>
 
 Apparently, the group was very active on 13th September’20 because we were discussing fundamental yet tricky and brain-wracking “Guess the Output” Java questions!
@@ -288,7 +288,7 @@ In order to keep each character's color consistent over all plots, I'm writing t
 </p>
 
 <p align="center">
-<img src="whatsappA/assets/plot_images/top10media_svg">
+<img src="whatsappA/assets/plot_images/top10media.svg">
 </p>
 
 
@@ -331,7 +331,7 @@ Will create another helper column using `emoji.demojize("<emoji>")`, since **emo
 Since the emojis **will not be rendered into the plots**, here is how the *top10emojis dataset looks like*!
 
 <p align="center">
-<img src="awhatsappA/assets/images/emojis.png">
+<img src="whatsappA/assets/images/emojis.png">
 </p>
 
 <p align="center">
@@ -502,7 +502,7 @@ VADER (Valence Aware Dictionary and Sentiment Reasoner) is a lexicon and rule-ba
 </p>
 
 <p align="center">
-<img src="whatsappA/assets/plot_images/swear_words_over_time.svg">
+<img src="whatsappA/assets/plot_images/vader_sentiment_over_time.svg">
 </p>
 
 # Conclusion
